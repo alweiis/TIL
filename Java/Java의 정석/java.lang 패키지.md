@@ -83,12 +83,12 @@ public final class String implements java.io.Serializable, Comparable {
   - 예를 들어 +연산자를 이용해서 문자열을 결합하는 경우 인스턴스 내의 문자열이 바뀌는 것이 아니라 새로운 문자열이 담긴 String 인스턴스가 생성되는 것이다.
 
 #### 문자열 비교
-문자열을 만드는 두 가지 방법, 문자열 리터럴을 지정하는 방법과 String 클래스의 생성자를 사용해서 만드는 방법이 있다.
+문자열을 만드는 두 가지 방법, **문자열 리터럴을 지정하는 방법**과 **String 클래스의 생성자를 사용**해서 만드는 방법이 있다.
 - String 클래스의 생성자를 이용하는 경우 new 연산자에 의해서 메모리할당이 이루어지기 때문에 항상 새로운 String 인스턴스가 생성된다.
 - 하지만 문자열 리터럴은 이미 존재하는 것을 재사용하는 것이다.
 
 #### 기본형 값을 String으로 변환
-- 기본형 값을 String으로 변환하는 방법에는 빈 문자열을 더하는 방법과 valueOf()를 사용하는 방법이 있다.
+- 기본형 값을 String으로 변환하는 방법에는 **빈 문자열을 더하는 방법**과 **valueOf()**를 사용하는 방법이 있다.
 ```java
 int i = 100;
 String str1 = i + "";               // 100을 "100"으로 변환하는 방법 1
@@ -96,7 +96,7 @@ String str2 = String.valueOf(i);    // 100을 "100"으로 변환하는 방법 2
 ```
 
 #### String을 기본형 값으로 변환
-- String을 기본형으로 변환하는 방법에는 valueOf()를 사용하거나 parseXxx()를 사용하면 된다.
+- String을 기본형으로 변환하는 방법에는 **valueOf()**를 사용하거나 **parseXxx()**를 사용하면 된다.
 ```java
 String str = "100";
 int i = Integer.valueOf(str);       // "100"을 100으로 변환하는 방법 1
@@ -123,11 +123,11 @@ public StringBuffer (int length) {
 }
 
 public StringBuffer() {
-  this(16);
+  this(16);							// 버퍼의 크기를 지정하지 않을 때, 버퍼의 크기는 16이 된다.
 }
 
 public StringBuffer(String str) {
-  this(str.length() + 16);
+  this(str.length() + 16);			// 지정한 문자열의 길이보다 16이 더 크게 버퍼를 생성한다.
   append(str);
 }
 ```
@@ -147,4 +147,27 @@ System.out.println(sb == sb2);    // false
 ### StringBuilder 클래스
 - StringBuffer는 멀티쓰레드에 안전(thread safe)하도록 동기화되어 있다.
 - 멀티 쓰레드로 작성된 프로그램이 아닌경우, StringBuffer의 동기화는 불필요하게 성능을 감소시킨다.
-- 그래서 StringBuffer에서 쓰레드의 동기화만 빼고 완전히 똑같은 기능으로 작동하는 StringBuilder 클래스가 추가되었다.
+- 그래서 StringBuffer에서 **쓰레드의 동기화만 빼고** 완전히 똑같은 기능으로 작동하는 **StringBuilder 클래스**가 추가되었다.
+
+### 래퍼(wrapper) 클래스
+
+- 기본형 변수를 객체로 다뤄야할 때 사용하는 클래스
+- 8개의 기본형을 대표하는 8개의 래퍼클래스가 있다.
+- 래퍼클래스는 모두 equals() 가 오버라이딩 되어 있어 주소값이 아닌 객체가 가지고 있는 값을 비교한다.
+- 또, toString() 도 오버라이딩 되어 있어 객체가 가지고 있는 값을 문자열로 변환하여 반환한다.
+
+| 기본형  |  래퍼클래스   | 생성자                                                       | 활용예                                                       |
+| :-----: | :-----------: | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| boolean |    Boolean    | Boolean (boolean value)<br />Boolean (String s)              | Boolean b = new Boolean (true);<br />Boolean b2 = new Boolean ("abc"); |
+|  char   | **Character** | Character (char value)                                       | Character c = new Character ('a');                           |
+|  byte   |     Byte      | Byte (byte value)<br />Byte (String s)                       | Byte b = new Byte (20);<br />Byte b2 = new Byte ("20");      |
+|  short  |     Short     | Short (short value)<br />Short (String s)                    | Short s = new Short (10);<br />Short s2 = new Short ("10");  |
+|   int   |  **Integer**  | Integer (int value)<br />Integer (String s)                  | Integer i = new Integer (100);<br />Integer i2 = new Integer ("100"); |
+|  long   |     Long      | Long (long value)<br />Long (String s)                       | Long l = new Long (100);<br />Long l2 = new Long ("100");    |
+|  float  |     Float     | Float (double value)<br />Float (float value)<br />Float (String s) | Float f = new Float (1.0);<br />Float f2 = new Float (1.0f);<br />Float f3 = new Float ("1.0f"); |
+| double  |    Double     | Double (double value)<br />Double (String s)                 | Double d = new Double (1.0);<br />Double d2 = new Double ("1.0"); |
+
+#### 오토박싱 & 언박싱(autoboxing & unboxing)
+
+- 기본형 값을 래퍼 클래스의 객체로 자동 변환해주는 것을 '오토박싱(autoboxing)'이라고 하고, 반대로 변환하는 것을 '언박싱(unboxing)' 이라고 한다.
+
