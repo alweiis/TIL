@@ -8,7 +8,7 @@
 > **protected** Object clone() : 객체 자신의 복사본을 반환한다.<br>
 > public boolean equals(Object obj) : 객체 자신과 객체 obj가 같은 객체인지 알려준다. (같으면 true)<br>
 > **protected** void finalize() : 객체가 소멸될 때 가비지 컬렉터에 의해 자동적으로 호출된다.(거의 사용 X)<br>
-> public Class getClass() : 객체 신의 클래스 정보를 담고 있는 Class인스턴스를 반환한다.<br>
+> public Class getClass() : 객체 자신의 클래스 정보를 담고 있는 Class인스턴스를 반환한다.<br>
 > public int hashCode() : 객체 자신의 해시코드를 반환한다.<br>
 > public String toString() : 객체 자신의 정보를 문자열로 반환한다.<br>
 > public void notify() : 객체 자신을 사용하려고 기다리는 쓰레드를 하나만 깨운다.<br>
