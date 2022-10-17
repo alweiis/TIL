@@ -123,11 +123,11 @@ public StringBuffer (int length) {
 }
 
 public StringBuffer() {
-  this(16);							// 버퍼의 크기를 지정하지 않을 때, 버퍼의 크기는 16이 된다.
+  this(16);	                        // 버퍼의 크기를 지정하지 않을 때, 버퍼의 크기는 16이 된다.
 }
 
 public StringBuffer(String str) {
-  this(str.length() + 16);			// 지정한 문자열의 길이보다 16이 더 크게 버퍼를 생성한다.
+  this(str.length() + 16);              // 지정한 문자열의 길이보다 16이 더 크게 버퍼를 생성한다.
   append(str);
 }
 ```
@@ -138,8 +138,8 @@ public StringBuffer(String str) {
 StringBuffer sb = new StringBuffer("123");
 StringBuffer sb2 = new StringBuffer("123");
 
-System.out.println(sb == sb2);    // false
-System.out.println(sb == sb2);    // false
+System.out.println(sb == sb2);          // false
+System.out.println(sb.equals(sb2));     // false
 ```
 - 반면에 toString()은 오버라이딩되어 있어서 StringBuffer 인스턴스에 toString()을 호출하면, 담고있는 문자열을 String으로 반환한다.
 - 그래서 StringBuffer 인스턴스에 담긴 문자열을 비교하기 위해서는 StringBuffer 인스턴스에 toString()을 호출해서 String 인스턴스를 얻은 다음, equals() 메서드를 사용해서 비교해야한다.
