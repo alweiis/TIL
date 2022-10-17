@@ -6,9 +6,9 @@
 - Object 클래스의 멤버들은 모든 클래스에서 바로 사용 가능
 - Object 클래스는 멤버변수는 없고 오직 11개의 메서드만 가지고 있다.
 > **protected** Object clone() : 객체 자신의 복사본을 반환한다.<br>
-> public boolean equals() : 객체 자신과 객체 obj가 같은 객체인지 알려준다. (같으면 true)<br>
+> public boolean equals(Object obj) : 객체 자신과 객체 obj가 같은 객체인지 알려준다. (같으면 true)<br>
 > **protected** void finalize() : 객체가 소멸될 때 가비지 컬렉터에 의해 자동적으로 호출된다.(거의 사용 X)<br>
-> public Class getClass() : 객체 잔신의 클래스 정보를 담고 있는 Class인스턴스를 반환한다.<br>
+> public Class getClass() : 객체 신의 클래스 정보를 담고 있는 Class인스턴스를 반환한다.<br>
 > public int hashCode() : 객체 자신의 해시코드를 반환한다.<br>
 > public String toString() : 객체 자신의 정보를 문자열로 반환한다.<br>
 > public void notify() : 객체 자신을 사용하려고 기다리는 쓰레드를 하나만 깨운다.<br>
@@ -88,7 +88,7 @@ public final class String implements java.io.Serializable, Comparable {
 - 하지만 문자열 리터럴은 이미 존재하는 것을 재사용하는 것이다.
 
 #### 기본형 값을 String으로 변환
-- 기본형 값을 String으로 변환하는 방법에는 **빈 문자열을 더하는 방법**과 **valueOf()**를 사용하는 방법이 있다.
+- 기본형 값을 String으로 변환하는 방법에는 `빈 문자열을 더하는 방법`과 `valueOf()`를 사용하는 방법이 있다.
 ```java
 int i = 100;
 String str1 = i + "";               // 100을 "100"으로 변환하는 방법 1
@@ -96,7 +96,7 @@ String str2 = String.valueOf(i);    // 100을 "100"으로 변환하는 방법 2
 ```
 
 #### String을 기본형 값으로 변환
-- String을 기본형으로 변환하는 방법에는 **valueOf()**를 사용하거나 **parseXxx()**를 사용하면 된다.
+- String을 기본형으로 변환하는 방법에는 `valueOf()`를 사용하거나 `parseXxx()`를 사용하면 된다.
 ```java
 String str = "100";
 int i = Integer.valueOf(str);       // "100"을 100으로 변환하는 방법 1
